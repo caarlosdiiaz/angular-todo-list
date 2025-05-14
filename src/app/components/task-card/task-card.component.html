@@ -1,0 +1,12 @@
+<div class="card mb-3 shadow border-2 border-primary bg-light">
+  <div class="card-body">
+    <h5 class="card-title text-primary fw-semibold">{{ task.title }}</h5>
+    <p class="card-text text-secondary fw-bold">{{ task.description }}</p>
+  </div>
+  <div class="card-footer text-end">
+    @if (!task.completed) {
+      <button class="btn btn-primary mx-3">Completed</button>
+    }
+    <button class="btn btn-danger">Delete</button>
+  </div>
+</div>

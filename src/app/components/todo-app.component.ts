@@ -12,10 +12,15 @@ import { TaskListComponent } from "./task-list/task-list.component";
 export class TodoAppComponent implements OnInit {
 
   tasks: Task[] = [];
+  showModal: boolean = false;
 
   constructor(private service: TaskService) {}
 
   ngOnInit() {
     this.tasks = this.service.findAll();
+  }
+
+  openCloseModal() {
+    this.showModal = !this.showModal;
   }
 }

@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { TaskService } from '../../service/task.service';
 import { Task } from '../../models/task';
+import { TaskCardComponent } from "../task-card/task-card.component";
 
 @Component({
   selector: 'task-list',
   standalone: true,
-  imports: [],
-  templateUrl: './task-list.component.html',
-  styleUrl: './task-list.component.css'
+  imports: [TaskCardComponent],
+  templateUrl: './task-list.component.html'
 })
 export class TaskListComponent {
 

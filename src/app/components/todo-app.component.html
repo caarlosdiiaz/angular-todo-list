@@ -1,5 +1,8 @@
 <div class="container">
   <h1>Todo App</h1>
   <button (click)="openCloseModal()">Create task</button>
+  @if(showModal) {
+    <create-modal (closeEventEmiter)="openCloseModal()"/>
+  }
   <task-list [tasks]="tasks"/>
 </div>

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../service/task.service';
 import { Task } from '../models/task';
 import { TaskListComponent } from "./task-list/task-list.component";
+import { CreateModalComponent } from "./create-modal/create-modal.component";
 
 @Component({
   selector: 'todo-app',
   standalone: true,
-  imports: [TaskListComponent],
+  imports: [TaskListComponent, CreateModalComponent],
   templateUrl: './todo-app.component.html'
 })
 export class TodoAppComponent implements OnInit {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,11 @@ export class TaskService {
     t.id = tasks.length + 1;
     tasks.push(t);
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    Swal.fire({
+      title: 'Task added successfully',
+      text: `You created a new task: ${t.title}`,
+      icon: 'success',
+    })
   }
 
   findById(id: number): Task | undefined {

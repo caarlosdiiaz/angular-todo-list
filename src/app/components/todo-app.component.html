@@ -1,8 +1,7 @@
-<div class="container">
-  <h1>Todo App</h1>
-  <button (click)="openCloseModal()">Create task</button>
-  @if(showModal) {
+<div class="container mt-4">
+  @if(showModal == true){
     <create-modal (closeEventEmiter)="openCloseModal()"/>
   }
-  <task-list [tasks]="tasks"/>
+  <button class="btn btn-primary" (click)="openCloseModal()">Create task</button>
+  <task-list [tasks]="tasks" (taskModifieds)="onTaskModified()"/>
 </div>

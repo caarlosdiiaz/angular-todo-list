@@ -1,24 +1,96 @@
-<div class="abrir-modal">
-  <div class="modal" style="display: block;" tabindex="-1">
+<div class="abrir-modal animacion fadeIn">
+  <div class="modal" style="display: block" tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Create new Task</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCloseModal()"></button>
+          <h5 class="modal-title">Create new Tasks</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="closeModal()"
+          ></button>
         </div>
         <div class="modal-body">
-          <form action="">
-            <div class=""><input type="text" class="form-control my-3" placeholder="Task name"/></div>
-            <div class=""><input type="text" class="form-control my-3" placeholder="Task description"/></div>
-            <div class=""><input type="date" class="form-control my-3" placeholder="Due before"/></div>
+          <form (ngSubmit)="createNewTask(taskForm)" #taskForm="ngForm">
+            <div class="">
+              <input
+                type="text"
+                name="title"
+                #title="ngModel"
+                [(ngModel)]="newTask.title"
+                required
+                class="form-control my-2"
+                placeholder="Task name"
+              />
+
+              @if(title.invalid && (title.dirty || title.touched)) {
+                @if(title.errors?.['required']) {
+                  <div class="text-danger">
+                    The title is required
+                  </div>
+                }
+              }
+            </div>
+            <div class="">
+              <input
+                type="text"
+                name="description"
+                #description="ngModel"
+                [(ngModel)]="newTask.description"
+                required
+                class="form-control my-2"
+                placeholder="Task description"
+              />
+
+              @if(description.invalid && (description.dirty || description.touched)) {
+                @if(description.errors?.['required']) {
+                  <div class="text-danger">
+                    The description is required
+                  </div>
+                }
+              }
+            </div>
+            <div class="">
+              <input
+                type="date"
+                name="dueDate"
+                #dueDate="ngModel"
+                [(ngModel)]="newTask.dueDate"
+                required
+                class="form-control my-2"
+                placeholder="Task due Date"
+              />
+
+              @if(dueDate.invalid && (dueDate.dirty || dueDate.touched)) {
+                @if(dueDate.errors?.['required']) {
+                  <div class="text-danger">
+                    The dueDate is required
+                  </div>
+                }
+              }
+            </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCloseModal()">Close</button>
-          <button type="button" class="btn btn-primary" (click)="todo()">Save changes</button>
+          <button
+          class="btn btn-primary mx-2"
+          type="submit"
+          data-bs-dismiss="modal"
+          (click)="createNewTask(taskForm)">
+            Create Task
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--(click)="closeModal()"-->

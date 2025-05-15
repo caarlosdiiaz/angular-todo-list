@@ -5,7 +5,7 @@
     </div>
     @if (uncompletedTasks.length > 0 ) {
       @for (task of uncompletedTasks; track task.id) {
-        <task-card [task]="task" />
+        <task-card [task]="task" (tasksModifieds)="onTaskModifieds()"/>
       }
     } @else {
       <div class="card text-center text-muted border-primary border-2 bg-light mb-3 shadow">
@@ -22,7 +22,7 @@
     </div>
     @if (completedTasks.length > 0 ) {
       @for (task of completedTasks; track task.id) {
-        <task-card [task]="task" />
+        <task-card [task]="task" (tasksModifieds)="onTaskModifieds()"/>
       }
     } @else {
       <div class="card text-center text-muted border-primary border-2 bg-light mb-3 shadow">

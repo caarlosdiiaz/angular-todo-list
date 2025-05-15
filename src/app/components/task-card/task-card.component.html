@@ -3,10 +3,13 @@
     <h5 class="card-title text-primary fw-semibold">{{ task.title }}</h5>
     <p class="card-text text-secondary fw-bold">{{ task.description }}</p>
   </div>
-  <div class="card-footer text-end">
-    @if (!task.completed) {
-      <button class="btn btn-primary mx-3">Completed</button>
-    }
-    <button class="btn btn-danger">Delete</button>
+  <div class="card-footer">
+    <p class="text-muted">Due Before: {{ task.dueDate | date:'yyyy-MM-dd' }}</p>
+    <div class="text-end">
+      @if (!task.completed) {
+        <button class="btn btn-primary mx-3" (click)="completeTask(task.id)">Completed!</button>
+      }
+      <button class="btn btn-danger" (click)="deleteTask(task.id)">Delete</button>
+    </div>
   </div>
 </div>
